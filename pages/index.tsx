@@ -14,16 +14,17 @@ const LandingPage = () => {
         InitRenderState.NONE
       );
 
+    const [terminalEnabled, setTerminalEnabled] = useState(true);
+
     if (process.browser) {
-        return 
-        <div>
+        return ( <div>
         <TerminalWrapper
-        initRender={InitRenderState}
+        initRender={initRenderState}
         terminalEnabled={terminalEnabled}
       >
-        <Terminal />
+       <Terminal />
       </TerminalWrapper>
-      </div>
+      </div> )
     }
 
     return <div></div>
