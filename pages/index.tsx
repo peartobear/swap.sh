@@ -32,14 +32,14 @@ const LandingPage = () => {
   
   }
   
-  const advanceState = async () => {
-    if (initState == InitState.NONE) {
-      await advanceStateFromNone();
-    }
-  }
+  // const advanceState = async () => {
+  //   if (initState == InitState.NONE) {
+  //     await advanceStateFromNone();
+  //   }
+  // }
 
   useEffect(() => {
-    advanceState();
+    advanceStateFromNone();
 
     return () => {};
   }, []);
@@ -49,18 +49,17 @@ const LandingPage = () => {
         InitRenderState.NONE
       );
 
-    const [terminalEnabled, setTerminalEnabled] = useState(true);
+    const [terminalEnabled, setTerminalEnabled] = useState(false);
 
     if (process.browser) {
         return (
-          <div>
-          <Wrapper initRender={initRenderState} terminalEnabled={terminalEnabled}>
-        <TerminalWrapper
-        initRender={initRenderState}
-        terminalEnabled={terminalEnabled}
-      >
-       <Terminal />
-      </TerminalWrapper>
+        <div>
+        <Wrapper initRender={initRenderState} terminalEnabled={terminalEnabled}>
+          <TerminalWrapper
+          initRender={initRenderState}
+          terminalEnabled={terminalEnabled}>
+          <Terminal />
+          </TerminalWrapper>
       </Wrapper>
       </div> )
     }

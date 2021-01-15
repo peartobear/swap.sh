@@ -47,14 +47,6 @@ export function TerminalWrapper({
   font-size: ${dfstyles.fontSizeS};
 `;
 
-const STWInit = css`
-  position: absolute;
-  width: ${dfstyles.game.terminalWidth};
-  right: 0;
-  top: 0;
-  padding: 1em;
-  font-size: ${dfstyles.game.terminalFontSize};
-`;
 
 
   const StyledTerminalWrapper = styled.div<{
@@ -74,7 +66,7 @@ const STWInit = css`
     background: ${dfstyles.colors.background};
     position: relative;
     ${(props) =>
-      props.initRender !== InitRenderState.NONE ? STWInit : STWNoInit};
+      STWNoInit};
     @media (max-width: 660px) {
       width: 100%;
       padding: 1.5em 2em;
