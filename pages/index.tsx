@@ -28,7 +28,8 @@ const LandingPage = () => {
     const terminalEmitter = TerminalEmitter.getInstance();
     terminalEmitter.bashShell('otc init');
     terminalEmitter.println('Initializing otc trade...');
-    terminalEmitter.print('doing a bit of housekeeeping...');
+    terminalEmitter.println('doing a bit of housekeeeping...');
+    terminalEmitter.println('this shit is working for real...');
   
   }
   

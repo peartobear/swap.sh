@@ -61,9 +61,9 @@ type FragmentData = {
   };
   
 export const defaultTypistProps = {
-    startDelay: 0,
-    avgTypingDelay: 0,
-    stdTypingDelay: 0,
+    startDelay: 125,
+    avgTypingDelay: 75,
+    stdTypingDelay: 35,
     cursor: { show: false },
   };
   
