@@ -80,3 +80,15 @@ const STWInit = css`
       padding: 1.5em 2em;
     }
   `;
+
+  export function Wrapper({
+    children,
+    initRender,
+    terminalEnabled,
+  }: LandingWrapperProps) {
+    return (
+      <StyledWrapper initRender={initRender} terminalEnabled={terminalEnabled}>
+        {children}
+      </StyledWrapper>
+    );
+  }

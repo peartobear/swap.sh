@@ -54,20 +54,20 @@ type TypistProps = {
     stdTypingDelay: number;
     cursor: { show: boolean };
   };
-  type FragmentData = {
+type FragmentData = {
     fragment: React.ReactNode;
     skipTyping: boolean;
     typistProps: TypistProps;
   };
   
-  export const defaultTypistProps = {
+export const defaultTypistProps = {
     startDelay: 0,
     avgTypingDelay: 0,
     stdTypingDelay: 0,
     cursor: { show: false },
   };
   
-  export const shellProps = defaultTypistProps;
+export const shellProps = defaultTypistProps;
   
   // export const shellProps = {
   //   startDelay: 125,
@@ -319,8 +319,7 @@ type TypistProps = {
       setInputHeight(heightMeasureRef.current.scrollHeight);
     }, [inputText]);
   
-    return (
-      <TerminalContainer ref={ref}>
+    return ( <TerminalContainer ref={ref}>
         {fragments.map(
           // this allows us to print only the last 200 messages without react yelling at us
           (fragment, idx) =>

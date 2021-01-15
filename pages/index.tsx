@@ -1,6 +1,12 @@
 import Terminal from '../components/Terminal';
-import { TerminalWrapper } from '../components/TerminalWrapper'
+import { TerminalWrapper, Wrapper } from '../components/TerminalWrapper'
+
 import React, { useState, useEffect, useRef } from 'react';
+import TerminalEmitter, {
+  TerminalTextStyle,
+  TerminalEvent,
+} from '../utils/TerminalEmitter';
+
 
 export enum InitRenderState {
     NONE,
@@ -8,7 +14,36 @@ export enum InitRenderState {
     COMPLETE,
 }
 
+enum InitState {
+  NONE,
+}
+
+
 const LandingPage = () => {
+
+  let initState = InitState.NONE
+
+
+  const advanceStateFromNone = async () => {
+    const terminalEmitter = TerminalEmitter.getInstance();
+    terminalEmitter.bashShell('otc init');
+    terminalEmitter.println('Initializing otc trade...');
+    terminalEmitter.print('doing a bit of housekeeeping...');
+  
+  }
+  
+  const advanceState = async () => {
+    if (initState == InitState.NONE) {
+      await advanceStateFromNone();
+    }
+  }
+
+  useEffect(() => {
+    advanceState();
+
+    return () => {};
+  }, []);
+  
 
     const [initRenderState, setInitRenderState] = useState<InitRenderState>(
         InitRenderState.NONE
@@ -17,13 +52,16 @@ const LandingPage = () => {
     const [terminalEnabled, setTerminalEnabled] = useState(true);
 
     if (process.browser) {
-        return ( <div>
+        return (
+          <div>
+          <Wrapper initRender={initRenderState} terminalEnabled={terminalEnabled}>
         <TerminalWrapper
         initRender={initRenderState}
         terminalEnabled={terminalEnabled}
       >
        <Terminal />
       </TerminalWrapper>
+      </Wrapper>
       </div> )
     }
 
