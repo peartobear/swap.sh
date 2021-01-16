@@ -48,7 +48,6 @@ export function TerminalWrapper({
 `;
 
 
-
   const StyledTerminalWrapper = styled.div<{
     initRender: InitRenderState;
     terminalEnabled: boolean;

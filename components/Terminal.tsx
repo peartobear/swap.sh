@@ -30,7 +30,7 @@ export enum TerminalPromptType {
 const TerminalContainer = styled.div`
     height: 100%;
     width: 100%;
-    margin: 0, auto;
+    margin: 0px, auto;
     overflow: scroll;
     white-space: pre-wrap;
     overflow-wrap: break-word;
@@ -54,7 +54,8 @@ type TypistProps = {
     stdTypingDelay: number;
     cursor: { show: boolean };
   };
-type FragmentData = {
+
+  type FragmentData = {
     fragment: React.ReactNode;
     skipTyping: boolean;
     typistProps: TypistProps;
@@ -62,7 +63,7 @@ type FragmentData = {
   
 export const defaultTypistProps = {
     startDelay: 125,
-    avgTypingDelay: 75,
+    avgTypingDelay: 225,
     stdTypingDelay: 35,
     cursor: { show: false },
   };
