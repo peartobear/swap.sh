@@ -20,6 +20,7 @@ import {
     Red,
     Invisible,
     BasicLink,
+    Animate,
 } from './Text'
 
 export enum TerminalPromptType {
@@ -191,6 +192,9 @@ export const shellProps = defaultTypistProps;
             break;
           case TerminalTextStyle.Invisible:
             fragment = <Invisible>{innerFragment}</Invisible>;
+            break;
+          case TerminalTextStyle.Animate:
+            fragment = <Animate>{innerFragment}</Animate>;
             break;
           case TerminalTextStyle.Underline:
             fragment = (

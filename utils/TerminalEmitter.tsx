@@ -9,6 +9,7 @@ export enum TerminalTextStyle {
   Invisible,
   Default,
   Underline,
+  Animate,
 }
 
 export enum TerminalEvent {
@@ -23,6 +24,7 @@ export enum TerminalEvent {
   SkipAllTyping = 'SkipAllTyping',
   ChangePromptType = 'ChangePromptType',
   AllowUnfocusInput = 'AllowUnfocusInput',
+  Animate = 'Animate'
 }
 
 export enum TerminalPromptType {
@@ -67,6 +69,24 @@ class TerminalEmitter extends EventEmitter {
     typistProps = defaultTypistProps,
     recordAsInput: string | null = null
   ) {
+    this.emit(
+      TerminalEvent.Print,
+      str,
+      style,
+      skipTyping,
+      typistProps,
+      recordAsInput
+    );
+  }
+
+  AnimateEmoji(
+    str: string, 
+    style: TerminalTextStyle = TerminalTextStyle.Animate,
+    skipTyping = false,
+    typistProps = defaultTypistProps,
+    recordAsInput: string | null = null
+  
+    ){
     this.emit(
       TerminalEvent.Print,
       str,

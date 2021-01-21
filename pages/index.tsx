@@ -1,5 +1,7 @@
 import Terminal from '../components/Terminal';
 import { TerminalWrapper, Wrapper } from '../components/TerminalWrapper'
+import _ from 'lodash';
+
 
 import React, { useState, useEffect, useRef } from 'react';
 import TerminalEmitter, {
@@ -19,6 +21,24 @@ enum InitState {
 }
 
 
+//animate ellipse
+
+const wait = (ms: number) =>
+new Promise((resolve) => setTimeout(resolve, ms));
+
+const animEllipsis = async () => {
+const terminalEmitter = TerminalEmitter.getInstance();
+const delay = 0; // TODOPR 250
+for (const _i in _.range(3)) {
+  await wait(delay).then(() => terminalEmitter.print('.'));
+}
+await wait(delay * 2.5);
+return;
+};
+
+//
+
+
 const LandingPage = () => {
 
   let initState = InitState.NONE
@@ -27,10 +47,22 @@ const LandingPage = () => {
   const advanceStateFromNone = async () => {
     const terminalEmitter = TerminalEmitter.getInstance();
     terminalEmitter.bashShell('otc init');
-    terminalEmitter.println('Initializing otc trade...');
-    terminalEmitter.println('doing a bit of housekeeeping...');
-    terminalEmitter.println('this shit is working for real...');
-  
+    terminalEmitter.println('Initializing otc...');
+    terminalEmitter.print('Summoning the degen gods');
+    await animEllipsis();
+    await wait(1000);
+    terminalEmitter.AnimateEmoji(' 👹');
+    await wait(2000);
+    terminalEmitter.print(' Degen gods arrived', TerminalTextStyle.Blue);
+    terminalEmitter.newline();
+    terminalEmitter.print('Checking for Metamask');
+    await animEllipsis();
+    terminalEmitter.print(' ');
+    terminalEmitter.println(
+      'ERROR: Could not find Metamask, Please install Metamask',
+      TerminalTextStyle.Red
+    )
+
   }
   
   // const advanceState = async () => {
